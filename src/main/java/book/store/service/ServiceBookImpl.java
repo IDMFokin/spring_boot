@@ -7,22 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BookServiceImpl implements BookService {
+public class ServiceBookImpl implements ServiceBook {
 
-    private RepositoryBook bookRepository;
+    private RepositoryBook repositoryBook;
 
     @Autowired
-    public BookServiceImpl(RepositoryBook bookRepository) {
-        this.bookRepository = bookRepository;
+    public ServiceBookImpl(RepositoryBook bookRepository) {
+        this.repositoryBook = bookRepository;
     }
 
     @Override
     public Book save(Book book) {
-        return bookRepository.save(book);
+        return repositoryBook.save(book);
     }
 
     @Override
     public List<Book> findAll() {
-        return bookRepository.findAll();
+        return repositoryBook.findAll();
     }
 }

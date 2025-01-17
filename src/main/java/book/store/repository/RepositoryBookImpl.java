@@ -1,4 +1,3 @@
-
 package mate.academy.repository;
 
 import java.util.List;
