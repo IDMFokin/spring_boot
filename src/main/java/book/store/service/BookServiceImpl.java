@@ -1,7 +1,7 @@
 package book.store.service;
 
 import book.store.model.Book;
-import book.store.repository.RepositoryBook;
+import book.store.repository.BookRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ServiceBookImpl implements ServiceBook {
 
-    private RepositoryBook repositoryBook;
+    private BookRepository repositoryBook;
 
     @Override
     public Book save(Book book) {
