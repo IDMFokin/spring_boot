@@ -1,5 +1,6 @@
 package book.store.repository;
 
+import book.store.exception.DataProcessingException;
 import book.store.model.Book;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class RepositoryBookImpl implements RepositoryBook {
+public class BookRepositoryImpl implements BookRepository {
 
     private SessionFactory sessionFactory;
 
@@ -28,7 +29,7 @@ public class RepositoryBookImpl implements RepositoryBook {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't insert book into DB: " + book, e);
+            throw new DataProcessingException("Can't insert book into DB: " + book, e);
         } finally {
             if (session != null) {
                 session.close();
@@ -41,7 +42,7 @@ public class RepositoryBookImpl implements RepositoryBook {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("SELECT b FROM Book b", Book.class).getResultList();
         } catch (Exception e) {
-            throw new RuntimeException("Can't get all books from DB", e);
+            throw new DataProcessingException("Can't get all books from DB", e);
         }
     }
 }
