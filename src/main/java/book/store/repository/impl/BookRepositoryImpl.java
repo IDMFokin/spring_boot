@@ -1,7 +1,8 @@
-package book.store.repository;
+package book.store.repository.impl;
 
 import book.store.exception.DataProcessingException;
 import book.store.model.Book;
+import book.store.repository.BookRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class BookRepositoryImpl implements BookRepository {
 
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
     @Override
     public Book save(Book book) {
