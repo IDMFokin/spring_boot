@@ -2,11 +2,12 @@ package book.store.repository;
 
 import book.store.model.Book;
 import java.util.List;
+import java.util.Optional;
 
 public interface BookRepository {
     Book save(Book book);
 
     List<Book> findAll();
 
-    Book getBookById(Long id);
+    Optional<Book> getBookById(Long id);
 }
