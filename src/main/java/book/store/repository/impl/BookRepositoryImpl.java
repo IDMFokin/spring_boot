@@ -1,6 +1,7 @@
 package book.store.repository.impl;
 
 import book.store.exception.DataProcessingException;
+import book.store.exception.EntityNotFoundException;
 import book.store.model.Book;
 import book.store.repository.BookRepository;
 import java.util.List;
@@ -57,7 +58,7 @@ public class BookRepositoryImpl implements BookRepository {
             query.setParameter("id", id);
             return Optional.of(query.getSingleResult());
         } catch (Exception e) {
-            throw new DataProcessingException("Can't get book whit id " + id + " from DB", e);
+            throw new EntityNotFoundException("Can't get book whit id " + id + " from DB", e);
         }
     }
 }
